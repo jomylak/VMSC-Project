@@ -2,9 +2,9 @@ import pandas as pd
 
 def load_event_attendance_data():
     df = pd.read_csv("Cleaned_Event_Attendance.csv")
-    df['Event Date'] = pd.to_datetime(df['Event Date'])
-    df['day_of_week'] = df['Event Date'].dt.day_name()
-    df['month'] = df['Event Date'].dt.hour
+    df['event_date'] = pd.to_datetime(df['event_date'])
+    df['day_of_week'] = df['event_date'].dt.day_name()
+    df['month'] = df['event_date'].dt.hour
 
     return df
 
