@@ -1,4 +1,5 @@
 import pandas as pd
+import calendar
 
 def recommend_schedule(df):
     # Remove outliers (Field of Flags and Military Appreciation Tailgate)
@@ -13,7 +14,7 @@ def recommend_schedule(df):
 
     return {
         "best_day": best_day,
-        "best_month": best_month,
+        "best_month": calendar.month_name[best_month],
         "best_type": best_type,
         "ranked_days": weekday_avg.reset_index().rename(columns={"attendance": "average_attendance"})
     }
