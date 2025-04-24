@@ -1,6 +1,9 @@
 import streamlit as st
 from recommendation_engine import recommend_schedule, recommend_companies, find_popular_companies, find_company_name
 from load_data import load_company_data, load_event_attendance_data
+from month_hour import generate_month_hour_attendance_heatmap
+from month_DOW import generate_month_DOW_attendance_heatmap
+from DOW_hour import generate_DOW_hour_attendance_heatmap
 
 st.set_page_config(page_title="VMSC Event Dashboard", layout="wide")
 st.title("VMSC Event Recommendation")
@@ -55,3 +58,16 @@ if selected_company:
         st.dataframe(recommendations_df.reset_index(drop=True), use_container_width=True)
     else:
         st.info("No similar companies found based on previous visit data.")
+
+
+st.header("Month and Hour Heatmap")
+generate_month_hour_attendance_heatmap('CLEANED_attendances_by_month_and_hour.csv')
+st.image('heatmap_month_hour.png', caption='Attendance by Month and Start Hour')
+
+st.header("Month and DOW Heatmap")
+generate_month_DOW_attendance_heatmap('CLEANED_attendances_by_month_and_DOW.csv')
+st.image('heatmap_month_DOW.png', caption='Attendance by Month and Day of Week')
+
+st.header("DOW and Hour Heatmap")
+generate_DOW_hour_attendance_heatmap('CLEANED_attendances_by_DOW_and_hour.csv')
+st.image('heatmap_DOW_hour.png', caption='Attendance by Day of Week and Start Hour')
