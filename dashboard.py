@@ -53,13 +53,13 @@ def load_data (default_path: str, file_type: str = "csv", key: str = "data_file_
 
 tabs = st.tabs(["📊 Event Insights", "🔐 Login Trends", "🏢 Company Visits", "🧠 Recommendation Engine"])
 
-cleaned_event_attendance = load_data("Cleaned_Event_Attendance.csv",
+cleaned_event_attendance = load_data("backend/Cleaned_Event_Attendance.csv",
                                      key = "Event_Attendance_Uploader",
                                      uploader_text = "Upload Event Attendance File Here")
 cleaned_event_attendance["event_date"] = pd.to_datetime(cleaned_event_attendance["event_date"])
 cleaned_event_attendance = clean_data(cleaned_event_attendance)
 
-cleaned_company_visits = load_data("Cleaned_Company_Visits.csv",
+cleaned_company_visits = load_data("backend/Cleaned_Company_Visits.csv",
                                    key = "Company_Visits_Uploader",
                                    uploader_text = "Upload Company Sectors File Here")
 
